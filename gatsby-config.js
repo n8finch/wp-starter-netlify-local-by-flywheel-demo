@@ -18,31 +18,28 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-source-wordpress",
+      resolve: `gatsby-source-wordpress`,
       options: {
-        //Default options are for WP sites hosted on wordpress.com
-        //For sites self hosted and other options check:
-        //https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress
-        baseUrl: "gatsbystartercommunity.wordpress.com",
-        protocol: "https",
-        hostingWPCOM: true,
+        /*
+         * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
+         * Example : 'dev-gatbsyjswp.pantheonsite.io' or 'www.example-site.com'
+         */
+        baseUrl: `d2257a51.ngrok.io`,
+        // The protocol. This can be http or https.
+        protocol: `http`,
+        // Indicates whether the site is hosted on wordpress.com.
+        // If false, then the assumption is made that the site is self hosted.
+        // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.
+        // If your site is hosted on wordpress.org, then set this to false.
+        hostingWPCOM: false,
+        // If useACF is true, then the source plugin will try to import the WordPress ACF Plugin contents.
+        // This feature is untested for sites hosted on WordPress.com
         useACF: false,
-        auth: {
-          //Create a file named .env in root folder of your project
-          //And add there your clientId, clientSecret, WordPressUser and WordPressPassword
-          //More info about environment variables: https://www.gatsbyjs.org/docs/environment-variables
-          //More info about communicate with wordpress.com API: https://developer.wordpress.com/apps/
-          wpcom_app_clientId: process.env.WORDPRESS_CLIENT_ID,
-          wpcom_app_clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
-          wpcom_user: process.env.WORDPRESS_USER,
-          wpcom_pass: process.env.WORDPRESS_PASSWORD
-        },
-        searchAndReplaceContentUrls: {
-          //Nested urls won't work. If you find a solution, please fill a PR request
-          sourceUrl: "https://gatsbystartercommunity.wordpress.com",
-          replacementUrl: "https://gatsbystartercommunity.netlify.com"
-        }
-      }
+        includedRoutes: [
+          "**/posts",
+          "**/pages",
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

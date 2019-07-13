@@ -71,12 +71,8 @@ export const query = graphql`
       title
       content
       excerpt
-      categories {
-        name
-      }
-      author {
-        name
-      }
+      categories
+      author
     }
   }
 `;

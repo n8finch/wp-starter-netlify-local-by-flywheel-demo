@@ -41,7 +41,7 @@ const pagination = (current, last) => {
 
 const BlogIndex = props => {
   const { data } = props;
-  const siteTitle = data.site.siteMetadata.title;
+  const siteTitle = data.allWordpressSiteMetadata.edges;
   const posts = data.allWordpressPost.edges;
   const { currentPage, numPages } = props.pageContext;
 
@@ -56,7 +56,7 @@ const BlogIndex = props => {
             key={post.node.wordpress_id}
             title={post.node.title}
             excerpt={post.node.excerpt}
-            media={post.node.featured_media}
+            media={post.node.featured_image_src}
             slug={post.node.slug}
             index={index}
           />
@@ -95,9 +95,12 @@ const BlogIndex = props => {
 
 export const query = graphql`
   query wordpressPosts($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
+    allWordpressSiteMetadata {
+      edges {
+        node {
+          name
+          description
+        }
       }
     }
     allWordpressPost(
@@ -112,16 +115,7 @@ export const query = graphql`
           title
           slug
           excerpt
-          featured_media {
-            media_type
-            localFile {
-              childImageSharp {
-                fixed(width: 700) {
-                  src
-                }
-              }
-            }
-          }
+          featured_image_src
         }
       }
     }

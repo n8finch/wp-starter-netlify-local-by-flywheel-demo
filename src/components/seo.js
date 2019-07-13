@@ -3,23 +3,20 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 
-const htmlDecode = str =>
-  str.replace(/&#(\d+);/g, ({ dec }) => String.fromCharCode(dec));
-
 function SEO({ description, lang, meta, keywords, title }) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
         const metaDescription =
-          description || data.site.siteMetadata.description;
+          description || data.allWordpressSiteMetadata.edges[0].node.description;
         return (
           <Helmet
             htmlAttributes={{
               lang
             }}
-            title={htmlDecode(title)}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            title={title}
+            titleTemplate={`%s | ${data.allWordpressSiteMetadata.edges[0].node.title}`}
             meta={[
               {
                 name: `description`,
@@ -93,6 +90,14 @@ const detailsQuery = graphql`
         title
         description
         author
+      }
+    }
+    allWordpressSiteMetadata {
+      edges {
+        node {
+          name
+          description
+        }
       }
     }
   }
