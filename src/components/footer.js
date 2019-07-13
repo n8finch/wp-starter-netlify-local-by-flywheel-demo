@@ -4,8 +4,8 @@ const Footer = () => (
   <footer className="footer">
     <div className="content has-text-centered">
       <p>
-        <strong>Gatsby Starter WordPress Community</strong> by{" "}
-        <a href="https://www.pablovila.com">Pablo Vila</a>
+        <strong>This website made by</strong> by{" "}
+        <a href="https://me.com">Your Truly</a>
       </p>
       <p>
         © {new Date().getFullYear()}, Built with
