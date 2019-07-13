@@ -13,7 +13,8 @@ Demo: https://cranky-hypatia-4fe7f5.netlify.com/
     3. In `gatsby-config.js`, change `baseUrl` to the ngrok.io URL (or whatever remote URL you want to use).
     4. Save the file and run `gatsby develop`
     5. Audit your site with `gatsby build` and `gatsby serve`.
-    6. Push to your own github repo, then deploy to netlify.
+    6. Push to your own github repo, create a new one [here](https://github.com/new)
+    7. Then deploy to [netlify](https://app.netlify.com/).
 
 ## Styling
 
