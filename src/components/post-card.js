@@ -4,8 +4,8 @@ import BackgroundImage from "./background-image.js";
 
 const PostCard = props => {
   let imageSrc = null;
-  if (props.media && props.media.localFile)
-    imageSrc = props.media.localFile.childImageSharp.fixed.src;
+  if (props.media)
+    imageSrc = props.media;
 
   const index = props.index;
 
@@ -18,7 +18,7 @@ const PostCard = props => {
       }`}
     >
       <BackgroundImage src={imageSrc} index={index}>
-        <Link to={`/${props.slug}`} />
+        <Link to={`/${props.slug}`} aria-label={props.title}/>
       </BackgroundImage>
       <div className="post-excerpt">
         <p className="title">
