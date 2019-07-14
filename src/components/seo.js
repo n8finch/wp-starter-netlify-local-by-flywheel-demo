@@ -15,8 +15,8 @@ function SEO({ description, lang, meta, keywords, title }) {
             htmlAttributes={{
               lang
             }}
-            title={title}
-            titleTemplate={`%s | ${data.allWordpressSiteMetadata.edges[0].node.title}`}
+            title={data.allWordpressSiteMetadata.edges[0].node.name}
+            titleTemplate={`%s | ${data.allWordpressSiteMetadata.edges[0].node.description}`}
             meta={[
               {
                 name: `description`,
